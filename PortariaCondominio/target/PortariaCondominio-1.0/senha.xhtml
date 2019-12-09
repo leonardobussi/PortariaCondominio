@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Senha</title>
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+
+	<h:form id="formListagem">
+		<p:panel header="Senha - Listagem">
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+				paginator="true" value="#{senhaBean.senhas}" var="senha"
+				rows="10">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+						actionListener="#{senhaBean.novo}" update=":formCadastro:painel" />
+				</f:facet>
+
+                            <p:column headerText="Senha" sortBy="#{senha.senha}"
+                                      filterBy="#{senha.senha}">
+                                <h:outputText value="#{senha.senha}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash"
+                                                         actionListener="#{senhaBean.excluir}"
+						update=":mensagem :formListagem:tabela">
+
+						<p:confirm header="Confirmação" message="Deseja excluir a Senha?"
+							icon="ui-icon-alert" />
+
+						<f:attribute name="senhaSelecionado" value="#{senha}" />
+					</p:commandButton>
+
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{senhaBean.editar}"
+						update=":formCadastro:painel" oncomplete="PF('dialogo').show();">
+						<f:attribute name="contatoSelecionado" value="#{senha}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+		</p:panel>
+	</h:form>
+
+	<!-- Dialog do Formaulario de Cadastro (Inclusão) -->
+
+	<p:dialog header="Senha - Cadastro" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="formCadastro">
+			<h:panelGrid id="painel" columns="1">
+				<p:outputLabel value="Senha:" />
+				<p:inputText maxlength="6" size="30"
+                                             value="#{senhaBean.senha.senha}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar"
+                                                 actionListener="#{senhaBean.salvar}"
+					update=":mensagem :formCadastro:painel :formListagem:tabela" />
+
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

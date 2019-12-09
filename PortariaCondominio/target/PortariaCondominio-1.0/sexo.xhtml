@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sexo</title>
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+
+	<h:form id="formListagem">
+		<p:panel header="Sexo - Listagem">
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+                                     paginator="true" value="#{sexoBean.sexos}" var="sexo"
+				rows="10">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+						actionListener="#{sexoBean.novo}" update=":formCadastro:painel" />
+				</f:facet>
+
+                            <p:column headerText="Sexo" sortBy="#{sexo.typeSexo}"
+                                      filterBy="#{sexo.typeSexo}">
+                                <h:outputText value="#{sexo.typeSexo}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash"
+                                                         actionListener="#{sexoBean.excluir}"
+						update=":mensagem :formListagem:tabela">
+
+						<p:confirm header="Confirmação" message="Deseja excluir?"
+							icon="ui-icon-alert" />
+
+						<f:attribute name="sexoSelecionado" value="#{sexo}" />
+					</p:commandButton>
+
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{sexoBean.editar}"
+						update=":formCadastro:painel" oncomplete="PF('dialogo').show();">
+						<f:attribute name="contatoSelecionado" value="#{sexo}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+		</p:panel>
+	</h:form>
+
+	<!-- Dialog do Formaulario de Cadastro (Inclusão) -->
+
+	<p:dialog header="Sexo Cadastro" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="formCadastro">
+			<h:panelGrid id="painel" columns="1">
+				<p:outputLabel value="Sexo:" />
+				<p:inputText maxlength="2" size="30"
+                                             value="#{sexoBean.sexo.typeSexo}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar"
+                                                 actionListener="#{sexoBean.salvar}"
+					update=":mensagem :formCadastro:painel :formListagem:tabela" />
+
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
