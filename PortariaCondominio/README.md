@@ -1,9 +1,9 @@
-# projeto Java Web usando Maven repository
+# Java Web project using Maven repository
 
 ###### this is a project made to register the residents of the condominium, the idea is to make the lives of condonimos easier and safer, because when registering on the platform a security password is generated so that the entrance to the condominium have autonomy to recognize who enters and who leaves.
 
 * choose an IDE
-1. configure the servers (Toncat or glassfish
+1. configure the servers (Toncat or glassfish)
 
 ###### to work, just clone the repository then enter the repository configure hibernate.cfg.xml to configure your local mysql bank password. next step is to create a database in mysql (create database ordinance;), then run hibernateTeste.ja to create the tables in the bank, to finish run the project.
 ----------------------------------------------------------------------------
