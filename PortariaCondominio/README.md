@@ -1,6 +1,6 @@
-**projeto Java Web usando Maven repository**
+# projeto Java Web usando Maven repository
 ----------------------------------------------------------------------------
-esse é um projeto feito para fazer o cadastro dos moradores do condominio, a ideia é deixar a vida dos condonimos mais facil e segura, pois ao cadastrar na plataforma é gerada uma senha de segurança para que a entrada ao condominio tenha autonomia para reconhecer quem entra e quem sai.
+######## esse é um projeto feito para fazer o cadastro dos moradores do condominio, a ideia é deixar a vida dos condonimos mais facil e segura, pois ao cadastrar na plataforma é gerada uma senha de segurança para que a entrada ao condominio tenha autonomia para reconhecer quem entra e quem sai.
 ----------------------------------------------------------------------------
 * escolha uma IDE
 1. configure o servers (Toncat ou glassfish )
