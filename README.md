@@ -1,18 +1,14 @@
-**projeto Java Web usando Maven repository**
+# Java Web project using Maven repository
+
+###### this is a project made to register the residents of the condominium, the idea is to make the lives of condonimos easier and safer, because when registering on the platform a security password is generated so that the entrance to the condominium have autonomy to recognize who enters and who leaves.
+
+* choose an IDE
+1. configure the servers (Toncat or glassfish)
+
+###### to work, just clone the repository then enter the repository configure hibernate.cfg.xml to configure your local mysql bank password. next step is to create a database in mysql (create database ordinance;), then run hibernateTeste.ja to create the tables in the bank, to finish run the project.
 ----------------------------------------------------------------------------
-esse é um projeto feito para fazer o cadastro dos moradores do condominio, a ideia é deixar a vida dos condonimos mais facil e segura, pois ao cadastrar na plataforma é gerada uma senha de segurança para que a entrada ao condominio tenha autonomia para reconhecer quem entra e quem sai.
-----------------------------------------------------------------------------
-* escolha uma IDE
-1. configure o servers (Toncat ou glassfish )
 
---------------------------------------------------------------------------------
-
-para funcionar bastar clonar o repositorio depois entrar no repositorio configurar o hibernate.cfg.xml para configurar sua senha senha do banco mysql local.
-proxima etapa é criar uma database no mysql (create database portaria;), em segida execulta o hibernateTeste.ja para criar as tabela no banco, para finalizar execulte o projeto.
-
---------------------------------------------------------------------------------
-
-**Tecnologias usadas**
+**Technologies used** 
 1. Maven
 2. Hibernate
 3. PrimeFace
@@ -20,11 +16,7 @@ proxima etapa é criar uma database no mysql (create database portaria;), em seg
 
 --------------------------------------------------------------------------------
 
-#Comandos úteis do Maven
 
-## Criação de Projeto
-
-### desktop java (jar)
 
 ```
 mvn archetype:generate \
